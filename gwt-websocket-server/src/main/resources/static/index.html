@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Hello WebSocket</title>
+    <script src="sockjs-0.3.4.js"></script>
+    <script src="stomp.js"></script>
+    <script type="text/javascript">
+        var stompClient = null;
+
+        function setConnected(connected) {
+            document.getElementById('connect').disabled = connected;
+            document.getElementById('disconnect').disabled = !connected;
+            document.getElementById('workDiv').style.visibility = connected ? 'visible' : 'hidden';
+        }
+
+        function connect() {
+            var socket = new SockJS('/websocketservice');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function(frame) {
+                setConnected(true);
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/info', function(answer){
+                    var problem = JSON.parse(answer.body).problem;
+                    var result = JSON.parse(answer.body).result;
+                    document.getElementById('workDiv').innerHTML += "<br> " + problem + " = " + result;
+                });
+            });
+        }
+
+        function disconnect() {
+            if (stompClient != null) {
+                stompClient.disconnect();
+            }
+            setConnected(false);
+            console.log("Disconnected");
+        }
+
+        function send(a, b) {
+            stompClient.send("/app/say", {}, JSON.stringify({ 'a': a, 'b': b}));
+        }
+
+        function buttonClick() {
+            var a = document.getElementById("aField").value;
+            var b = document.getElementById("bField").value;
+            send(a, b);
+        }
+
+
+    </script>
+</head>
+<body onload="disconnect()">
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div>
+    <div>
+        <button id="connect" onclick="connect();">Connect</button>
+        <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+    </div>
+    <div id="workDiv">
+        <input type="text" id="aField"/> <br/>
+        <input type="text" id="bField"/> <br/>
+        <input type="button" value="Send" onclick="buttonClick()"> <hr/>
+    </div>
+</div>
+</body>
+</html>
