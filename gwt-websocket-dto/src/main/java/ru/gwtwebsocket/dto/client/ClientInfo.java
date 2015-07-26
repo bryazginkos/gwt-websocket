@@ -1,11 +1,11 @@
 package ru.gwtwebsocket.dto.client;
 
-import ru.gwtwebsocket.dto.client.json.ClientInfoInterface;
+import ru.gwtwebsocket.dto.client.json.ClientInfoClient;
 
 /**
  * Created by Константин on 23.07.2015.
  */
-public class ClientInfo implements ClientInfoInterface {
+public class ClientInfo implements ClientInfoClient {
 
     private Integer a;
     private Integer b;
