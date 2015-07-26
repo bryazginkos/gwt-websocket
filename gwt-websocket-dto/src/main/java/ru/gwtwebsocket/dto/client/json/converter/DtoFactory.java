@@ -3,6 +3,7 @@ package ru.gwtwebsocket.dto.client.json.converter;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 import ru.gwtwebsocket.dto.client.json.ClientInfoClient;
+import ru.gwtwebsocket.dto.client.json.ServerAddInfoClient;
 import ru.gwtwebsocket.dto.client.json.ServerInfoClient;
 
 /**
@@ -12,5 +13,6 @@ public interface DtoFactory extends AutoBeanFactory {
 
     AutoBean<ClientInfoClient> clientInfoClient();
     AutoBean<ServerInfoClient> serverInfoClient();
+    AutoBean<ServerAddInfoClient> serverAddInfoClient();
 
 }

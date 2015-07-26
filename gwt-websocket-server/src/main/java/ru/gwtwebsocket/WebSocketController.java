@@ -5,7 +5,10 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import ru.gwtwebsocket.dto.client.ClientInfo;
+import ru.gwtwebsocket.dto.client.ServerAddInfo;
 import ru.gwtwebsocket.dto.client.ServerInfo;
+
+import java.util.Date;
 
 /**
  * Created by Константин on 23.07.2015.
@@ -22,7 +25,7 @@ public class WebSocketController {
         int b = clientInfo.getB();
         String problem = a  + "+" + b;
         int result = a + b;
-        sendResult(new ServerInfo(problem, result));
+        sendResult(new ServerInfo(problem, result, new ServerAddInfo(new Date())));
     }
 
     private void sendResult(ServerInfo serverInfo) {

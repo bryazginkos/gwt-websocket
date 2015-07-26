@@ -11,4 +11,8 @@ public interface ServerInfoClient {
     public String getProblem();
 
     public void setProblem(String problem);
+
+    public ServerAddInfoClient getServerAddInfo();
+
+    public void setServerAddInfo(ServerAddInfoClient serverAddInfo);
 }

@@ -21,7 +21,9 @@ public class WSModule implements EntryPoint {
                 new WSCallback<ServerInfoClient>() {
                     @Override
                     public void onMessage(ServerInfoClient serverInfo) {
-                        Window.alert(serverInfo.getProblem() + "=" + serverInfo.getResult());
+                        String msg = serverInfo.getProblem() + "=" + serverInfo.getResult();
+                        msg += " " + serverInfo.getServerAddInfo().getTime();
+                        Window.alert(msg);
                     }
                 });
         RootPanel.get().add(buttonConn);

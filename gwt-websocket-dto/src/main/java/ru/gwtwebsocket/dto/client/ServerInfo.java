@@ -1,5 +1,6 @@
 package ru.gwtwebsocket.dto.client;
 
+import ru.gwtwebsocket.dto.client.json.ServerAddInfoClient;
 import ru.gwtwebsocket.dto.client.json.ServerInfoClient;
 
 /**
@@ -9,10 +10,12 @@ public class ServerInfo implements ServerInfoClient {
 
     private String problem;
     private Integer result;
+    private ServerAddInfo serverAddInfo;
 
-    public ServerInfo(String problem, Integer result) {
+    public ServerInfo(String problem, Integer result, ServerAddInfo serverAddInfo) {
         this.problem = problem;
         this.result = result;
+        this.serverAddInfo = serverAddInfo;
     }
 
     public ServerInfo() {
@@ -36,5 +39,15 @@ public class ServerInfo implements ServerInfoClient {
     @Override
     public void setProblem(String problem) {
         this.problem = problem;
+    }
+
+    @Override
+    public ServerAddInfo getServerAddInfo() {
+        return serverAddInfo;
+    }
+
+    @Override
+    public void setServerAddInfo(ServerAddInfoClient serverAddInfo) {
+        this.serverAddInfo = (ServerAddInfo)serverAddInfo;
     }
 }
