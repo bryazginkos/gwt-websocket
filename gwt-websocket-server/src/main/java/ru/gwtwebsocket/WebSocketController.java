@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
-import ru.gwtwebsocket.json.ClientInfo;
-import ru.gwtwebsocket.json.ServerInfo;
+import ru.gwtwebsocket.dto.client.ClientInfo;
+import ru.gwtwebsocket.dto.client.ServerInfo;
 
 /**
  * Created by Константин on 23.07.2015.

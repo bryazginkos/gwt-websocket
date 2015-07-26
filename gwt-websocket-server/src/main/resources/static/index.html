@@ -15,6 +15,7 @@
 
         function connect() {
             var socket = new SockJS('/websocketservice');
+            console.log('url=' + socket.url);
             stompClient = Stomp.over(socket);
             stompClient.connect({}, function(frame) {
                 setConnected(true);

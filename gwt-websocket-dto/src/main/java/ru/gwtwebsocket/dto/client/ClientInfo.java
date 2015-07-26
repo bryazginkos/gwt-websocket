@@ -1,9 +1,11 @@
-package ru.gwtwebsocket.json;
+package ru.gwtwebsocket.dto.client;
+
+import ru.gwtwebsocket.dto.client.json.ClientInfoInterface;
 
 /**
  * Created by Константин on 23.07.2015.
  */
-public class ClientInfo {
+public class ClientInfo implements ClientInfoInterface {
 
     private Integer a;
     private Integer b;
@@ -16,18 +18,22 @@ public class ClientInfo {
     public ClientInfo() {
     }
 
+    @Override
     public Integer getA() {
         return a;
     }
 
+    @Override
     public void setA(Integer a) {
         this.a = a;
     }
 
+    @Override
     public Integer getB() {
         return b;
     }
 
+    @Override
     public void setB(Integer b) {
         this.b = b;
     }
