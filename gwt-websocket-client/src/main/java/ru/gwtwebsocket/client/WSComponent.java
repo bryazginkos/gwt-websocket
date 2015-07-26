@@ -4,7 +4,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.ScriptInjector;
 
 import ru.gwtwebsocket.dto.client.ClientInfo;
-import ru.gwtwebsocket.dto.client.json.ClientInfoInterface;
 import ru.gwtwebsocket.dto.client.json.ServerInfoInterface;
 import ru.gwtwebsocket.dto.client.json.converter.Converter;
 
@@ -18,8 +17,15 @@ public class WSComponent {
     private JavaScriptObject stompClient;
     private final Converter converter;
 
-    public WSComponent() {
+    private final String url;
+    private final String subscribeUrl;
+    private final WSCallback<ServerInfoInterface> callback;
+
+    public WSComponent(String url, String subscribeUrl, WSCallback<ServerInfoInterface> callback) {
         super();
+        this.url = url;
+        this.subscribeUrl = subscribeUrl;
+        this.callback = callback;
         converter = new Converter();
         if (!loadedLib) {
             loadScrpipts();
@@ -34,17 +40,17 @@ public class WSComponent {
 
     private void handleAnswer(String answer) {
         ServerInfoInterface serverInfoInterface = converter.deserialize(answer);
-        System.out.println(serverInfoInterface);
+        callback.onMessage(serverInfoInterface);
     }
 
 
     public native void connect() /*-{
-        var socket = new SockJS('http://127.0.0.1:8080/websocketservice');
-        stompClient = Stomp.over(socket);
         var obj = this;
+        var socket = new SockJS(obj.@ru.gwtwebsocket.client.WSComponent::url);
+        stompClient = Stomp.over(socket);
         stompClient.connect({}, function(frame) {
             console.log('Connected: ' + frame);
-            stompClient.subscribe('/topic/info', function(answer){
+            stompClient.subscribe(obj.@ru.gwtwebsocket.client.WSComponent::subscribeUrl, function(answer){
                 obj.@ru.gwtwebsocket.client.WSComponent::handleAnswer(Ljava/lang/String;)(answer.body);
             });
         });
