@@ -1,4 +1,4 @@
-package ru.gwtwebsocket.dto.client.json;
+package ru.gwtwebsocket.dto.client;
 
 /**
  * Created by Константин on 26.07.2015.

@@ -1,8 +1,5 @@
 package ru.gwtwebsocket.dto.client;
 
-import ru.gwtwebsocket.dto.client.json.ServerAddInfo;
-import ru.gwtwebsocket.dto.client.json.ServerInfo;
-
 /**
  * Created by Константин on 23.07.2015.
  */

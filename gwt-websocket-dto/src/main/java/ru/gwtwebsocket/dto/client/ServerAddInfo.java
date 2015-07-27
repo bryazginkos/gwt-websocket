@@ -1,4 +1,4 @@
-package ru.gwtwebsocket.dto.client.json;
+package ru.gwtwebsocket.dto.client;
 
 import java.util.Date;
 

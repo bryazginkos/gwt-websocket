@@ -2,9 +2,9 @@ package ru.gwtwebsocket.client;
 
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
-import ru.gwtwebsocket.dto.client.json.ClientInfo;
-import ru.gwtwebsocket.dto.client.json.ServerAddInfo;
-import ru.gwtwebsocket.dto.client.json.ServerInfo;
+import ru.gwtwebsocket.dto.client.ClientInfo;
+import ru.gwtwebsocket.dto.client.ServerAddInfo;
+import ru.gwtwebsocket.dto.client.ServerInfo;
 
 /**
  * Created by Константин on 26.07.2015.

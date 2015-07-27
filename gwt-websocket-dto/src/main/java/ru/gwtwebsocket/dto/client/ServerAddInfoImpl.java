@@ -1,7 +1,5 @@
 package ru.gwtwebsocket.dto.client;
 
-import ru.gwtwebsocket.dto.client.json.ServerAddInfo;
-
 import java.util.Date;
 
 /**
