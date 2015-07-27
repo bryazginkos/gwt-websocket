@@ -8,20 +8,20 @@ import ru.gwtwebsocket.dto.client.json.converter.Converter;
 /**
  * Created by Константин on 25.07.2015.
  */
-public class WSComponent<SI, GI> {
+public class WSComponent<S, G> {
 
     private static boolean loadedLib = false;
 
     private JavaScriptObject stompClient;
-    private final Converter<SI>  sConverter;
-    private final Converter<GI>  gConverter;
+    private final Converter<S>  sConverter;
+    private final Converter<G>  gConverter;
 
-    private final WSConfiguration<SI, GI> configuration;
+    private final WSConfiguration<S, G> configuration;
 
     private final String url;
     private final String subscribeUrl;
 
-    public WSComponent(WSConfiguration<SI, GI> configuration) {
+    public WSComponent(WSConfiguration<S, G> configuration) {
         super();
         this.configuration = configuration;
         this.url = configuration.getUrl();
@@ -40,7 +40,7 @@ public class WSComponent<SI, GI> {
     }
 
     private void handleAnswer(String answer) {
-        GI ans = gConverter.deserialize(answer);
+        G ans = gConverter.deserialize(answer);
         configuration.getCallback().onMessage(ans);
     }
 
@@ -61,12 +61,12 @@ public class WSComponent<SI, GI> {
         stompClient.send("/app/say", {}, json);
     }-*/;
 
-    private String convertToJSON(SI si) {
-        return sConverter.serialize(si);
+    private String convertToJSON(S s) {
+        return sConverter.serialize(s);
     }
 
-    public void send(SI si) {
-        String json = convertToJSON(si);
+    public void send(S s) {
+        String json = convertToJSON(s);
         send(json);
     }
 }
