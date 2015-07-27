@@ -12,6 +12,5 @@ repositories {
 dependencies {
     compile 'com.google.gwt:gwt-user:2.7.0'
 
-    compile project (":gwt-websocket-dto")
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
