@@ -40,11 +40,10 @@ public class WSComponent<S, G> {
         loadedLib = true;
     }
 
-    private void handleAnswer(String answer) {
-        G ans = gConverter.deserialize(answer);
-        configuration.getCallback().onMessage(ans);
+    public void send(S s) {
+        String json = sConverter.serialize(s);
+        send(json);
     }
-
 
     public native void connect() /*-{
         var obj = this;
@@ -58,12 +57,12 @@ public class WSComponent<S, G> {
         });
     }-*/;
 
+    private void handleAnswer(String answer) {
+        G ans = gConverter.deserialize(answer);
+        configuration.getCallback().onMessage(ans);
+    }
+
     private native void send(String json) /*-{
         stompClient.send("/app/say", {}, json);
     }-*/;
-
-    public void send(S s) {
-        String json = sConverter.serialize(s);
-        send(json);
-    }
 }
