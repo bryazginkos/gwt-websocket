@@ -5,8 +5,8 @@ package ru.gwtwebsocket.client;
  */
 public class WSConfiguration<S, G> {
 
-    private Class<S> siClass;
-    private Class<G> giClass;
+    private Class<S> sClass;
+    private Class<G> gClass;
 
     private String url;
     private String subscribeUrl;
@@ -16,43 +16,48 @@ public class WSConfiguration<S, G> {
     public WSConfiguration() {
     }
 
-    public Class<S> getSiClass() {
-        return siClass;
+    public Class<S> getSClass() {
+        return sClass;
     }
 
-    public void setSiClass(Class<S> siClass) {
-        this.siClass = siClass;
+    public WSConfiguration<S,G> withSClass(Class<S> sClass) {
+        this.sClass = sClass;
+        return this;
     }
 
-    public Class<G> getGiClass() {
-        return giClass;
+    public Class<G> getGClass() {
+        return gClass;
     }
 
-    public void setGiClass(Class<G> giClass) {
-        this.giClass = giClass;
+    public WSConfiguration<S, G> withGClass(Class<G> gClass) {
+        this.gClass = gClass;
+        return this;
     }
 
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public WSConfiguration<S, G> withUrl(String url) {
         this.url = url;
+        return this;
     }
 
     public String getSubscribeUrl() {
         return subscribeUrl;
     }
 
-    public void setSubscribeUrl(String subscribeUrl) {
+    public WSConfiguration<S, G> withSubscribeUrl(String subscribeUrl) {
         this.subscribeUrl = subscribeUrl;
+        return this;
     }
 
     public WSCallback<G> getCallback() {
         return callback;
     }
 
-    public void setCallback(WSCallback<G> callback) {
+    public WSConfiguration<S, G> withCallback(WSCallback<G> callback) {
         this.callback = callback;
+        return this;
     }
 }

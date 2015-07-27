@@ -23,11 +23,12 @@ public class WSComponent<S, G> {
 
     public WSComponent(WSConfiguration<S, G> configuration) {
         super();
+        WSConfigurationValidator.validate(configuration);
         this.configuration = configuration;
         this.url = configuration.getUrl();
         this.subscribeUrl = configuration.getSubscribeUrl();
-        sConverter = new Converter<>(configuration.getSiClass());
-        gConverter = new Converter<>(configuration.getGiClass());
+        sConverter = new Converter<>(configuration.getSClass());
+        gConverter = new Converter<>(configuration.getGClass());
         if (!loadedLib) {
             loadScrpipts();
         }

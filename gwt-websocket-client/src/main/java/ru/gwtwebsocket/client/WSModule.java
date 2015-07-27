@@ -17,19 +17,21 @@ public class WSModule implements EntryPoint {
     public void onModuleLoad() {
         Button buttonConn = new Button("Connect");
         Button buttonSend = new Button("Send");
-        WSConfiguration<ClientInfo, ServerInfo> wsConfiguration = new WSConfiguration<>();
-        wsConfiguration.setUrl("http://127.0.0.1:8080/websocketservice");
-        wsConfiguration.setGiClass(ServerInfo.class);
-        wsConfiguration.setSiClass(ClientInfo.class);
-        wsConfiguration.setSubscribeUrl("/topic/info");
-        wsConfiguration.setCallback(new WSCallback<ServerInfo>() {
-            @Override
-            public void onMessage(ServerInfo serverInfo) {
-                String msg = serverInfo.getProblem() + "=" + serverInfo.getResult();
-                msg += " " + serverInfo.getServerAddInfo().getTime();
-                Window.alert(msg);
-            }
-        });
+
+        WSConfiguration<ClientInfo, ServerInfo> wsConfiguration = new WSConfiguration<ClientInfo, ServerInfo>()
+                .withUrl("http://127.0.0.1:8080/websocketservice")
+                .withSubscribeUrl("/topic/info")
+                .withGClass(ServerInfo.class)
+                .withSClass(ClientInfo.class)
+                .withCallback(new WSCallback<ServerInfo>() {
+                    @Override
+                    public void onMessage(ServerInfo serverInfo) {
+                        String msg = serverInfo.getProblem() + "=" + serverInfo.getResult();
+                        msg += " " + serverInfo.getServerAddInfo().getTime();
+                        Window.alert(msg);
+                    }
+                });
+
         final WSComponent<ClientInfo, ServerInfo> wsComponent = new WSComponent<>(wsConfiguration);
         RootPanel.get().add(buttonConn);
         RootPanel.get().add(buttonSend);
