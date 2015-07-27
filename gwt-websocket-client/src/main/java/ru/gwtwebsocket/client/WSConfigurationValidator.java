@@ -12,6 +12,6 @@ public class WSConfigurationValidator {
         if (configuration.getSClass() == null) throw new IllegalArgumentException("Websocket S class is null. Use S.getClass");
         if (configuration.getUrl() == null) throw new IllegalArgumentException("Websocket URL is null");
         if (configuration.getSubscribeUrl() == null) throw new IllegalArgumentException("Websocket subscribe URL is null");
-
+        if (configuration.getAutoBeanFactory() == null) throw new IllegalArgumentException("Websocket autoBeanFactory is null");
     }
 }

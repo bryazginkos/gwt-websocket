@@ -1,4 +1,4 @@
-package ru.gwtwebsocket.dto.client.json.converter;
+package ru.gwtwebsocket.client;
 
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;

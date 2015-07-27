@@ -1,6 +1,7 @@
 package ru.gwtwebsocket.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
@@ -23,6 +24,7 @@ public class WSModule implements EntryPoint {
                 .withSubscribeUrl("/topic/info")
                 .withGClass(ServerInfo.class)
                 .withSClass(ClientInfo.class)
+                .withAutoBeanFactory(GWT.<DtoFactory>create(DtoFactory.class))
                 .withCallback(new WSCallback<ServerInfo>() {
                     @Override
                     public void onMessage(ServerInfo serverInfo) {

@@ -1,5 +1,7 @@
 package ru.gwtwebsocket.client;
 
+import com.google.web.bindery.autobean.shared.AutoBeanFactory;
+
 /**
  * Created by Константин on 27.07.2015.
  */
@@ -7,6 +9,8 @@ public class WSConfiguration<S, G> {
 
     private Class<S> sClass;
     private Class<G> gClass;
+
+    private AutoBeanFactory autoBeanFactory;
 
     private String url;
     private String subscribeUrl;
@@ -58,6 +62,15 @@ public class WSConfiguration<S, G> {
 
     public WSConfiguration<S, G> withCallback(WSCallback<G> callback) {
         this.callback = callback;
+        return this;
+    }
+
+    public AutoBeanFactory getAutoBeanFactory() {
+        return autoBeanFactory;
+    }
+
+    public WSConfiguration<S, G> withAutoBeanFactory(AutoBeanFactory autoBeanFactory) {
+        this.autoBeanFactory = autoBeanFactory;
         return this;
     }
 }

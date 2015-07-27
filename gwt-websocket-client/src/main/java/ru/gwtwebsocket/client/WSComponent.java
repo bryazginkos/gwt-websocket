@@ -3,8 +3,6 @@ package ru.gwtwebsocket.client;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.ScriptInjector;
 
-import ru.gwtwebsocket.dto.client.json.converter.Converter;
-
 /**
  * Created by Константин on 25.07.2015.
  */
@@ -27,8 +25,8 @@ public class WSComponent<S, G> {
         this.configuration = configuration;
         this.url = configuration.getUrl();
         this.subscribeUrl = configuration.getSubscribeUrl();
-        sConverter = new Converter<>(configuration.getSClass());
-        gConverter = new Converter<>(configuration.getGClass());
+        sConverter = new Converter<>(configuration.getSClass(), configuration.getAutoBeanFactory());
+        gConverter = new Converter<>(configuration.getGClass(), configuration.getAutoBeanFactory());
         if (!loadedLib) {
             loadScripts();
         }
