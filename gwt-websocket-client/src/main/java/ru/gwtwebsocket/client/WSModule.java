@@ -5,7 +5,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
-import ru.gwtwebsocket.dto.client.ClientInfo;
+import ru.gwtwebsocket.dto.client.ClientInfoImpl;
 import ru.gwtwebsocket.dto.client.json.ServerInfoClient;
 
 /**
@@ -39,7 +39,7 @@ public class WSModule implements EntryPoint {
         buttonSend.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                wsComponent.send(new ClientInfo(3,2));
+                wsComponent.send(new ClientInfoImpl(3,2));
             }
         });
     }

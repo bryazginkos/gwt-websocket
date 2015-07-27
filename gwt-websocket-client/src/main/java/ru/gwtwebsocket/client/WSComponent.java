@@ -3,7 +3,7 @@ package ru.gwtwebsocket.client;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.ScriptInjector;
 
-import ru.gwtwebsocket.dto.client.ClientInfo;
+import ru.gwtwebsocket.dto.client.ClientInfoImpl;
 import ru.gwtwebsocket.dto.client.json.ServerInfoClient;
 import ru.gwtwebsocket.dto.client.json.converter.Converter;
 
@@ -60,12 +60,12 @@ public class WSComponent {
         stompClient.send("/app/say", {}, json);
     }-*/;
 
-    private String convertToJSON(ClientInfo clientInfo) {
-        return converter.serialize(clientInfo);
+    private String convertToJSON(ClientInfoImpl clientInfoImpl) {
+        return converter.serialize(clientInfoImpl);
     }
 
-    public void send(ClientInfo clientInfo) {
-        String json = convertToJSON(clientInfo);
+    public void send(ClientInfoImpl clientInfoImpl) {
+        String json = convertToJSON(clientInfoImpl);
         send(json);
     }
 }

@@ -3,7 +3,7 @@ package ru.gwtwebsocket.dto.client.json;
 /**
  * Created by Константин on 26.07.2015.
  */
-public interface ClientInfoClient {
+public interface ClientInfo {
 
     public Integer getA();
 

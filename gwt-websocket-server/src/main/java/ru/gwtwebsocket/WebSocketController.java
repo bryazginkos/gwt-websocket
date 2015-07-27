@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
-import ru.gwtwebsocket.dto.client.ClientInfo;
+import ru.gwtwebsocket.dto.client.ClientInfoImpl;
 import ru.gwtwebsocket.dto.client.ServerAddInfo;
 import ru.gwtwebsocket.dto.client.ServerInfo;
 
@@ -20,9 +20,9 @@ public class WebSocketController {
     private SimpMessagingTemplate messagingTemplate;
 
     @MessageMapping("/say")
-    public void say(ClientInfo clientInfo) {
-        int a = clientInfo.getA();
-        int b = clientInfo.getB();
+    public void say(ClientInfoImpl clientInfoImpl) {
+        int a = clientInfoImpl.getA();
+        int b = clientInfoImpl.getB();
         String problem = a  + "+" + b;
         int result = a + b;
         sendResult(new ServerInfo(problem, result, new ServerAddInfo(new Date())));

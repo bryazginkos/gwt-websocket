@@ -1,21 +1,21 @@
 package ru.gwtwebsocket.dto.client;
 
-import ru.gwtwebsocket.dto.client.json.ClientInfoClient;
+import ru.gwtwebsocket.dto.client.json.ClientInfo;
 
 /**
  * Created by Константин on 23.07.2015.
  */
-public class ClientInfo implements ClientInfoClient {
+public class ClientInfoImpl implements ClientInfo {
 
     private Integer a;
     private Integer b;
 
-    public ClientInfo(Integer a, Integer b) {
+    public ClientInfoImpl(Integer a, Integer b) {
         this.a = a;
         this.b = b;
     }
 
-    public ClientInfo() {
+    public ClientInfoImpl() {
     }
 
     @Override
