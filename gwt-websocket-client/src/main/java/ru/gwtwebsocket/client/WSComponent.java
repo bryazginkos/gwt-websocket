@@ -62,12 +62,8 @@ public class WSComponent<S, G> {
         stompClient.send("/app/say", {}, json);
     }-*/;
 
-    private String convertToJSON(S s) {
-        return sConverter.serialize(s);
-    }
-
     public void send(S s) {
-        String json = convertToJSON(s);
+        String json = sConverter.serialize(s);
         send(json);
     }
 }
