@@ -4,7 +4,7 @@
 
     <inherits name='com.google.gwt.user.User'/>
     <inherits name="ru.gwtwebsocket.dto.DtoModule"/>
-    <inherits name="ru.gwtwebsocket.WSModule"/>
+    <inherits name="ru.gwtwebsocket.WebSocket"/>
 
     <entry-point class='ru.kos.gwtexample.client.ExampleModule'/>
 
