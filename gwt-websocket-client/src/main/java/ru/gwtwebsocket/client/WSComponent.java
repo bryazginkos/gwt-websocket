@@ -30,11 +30,11 @@ public class WSComponent<S, G> {
         sConverter = new Converter<>(configuration.getSClass());
         gConverter = new Converter<>(configuration.getGClass());
         if (!loadedLib) {
-            loadScrpipts();
+            loadScripts();
         }
     }
 
-    public static void loadScrpipts() {
+    public static void loadScripts() {
         ScriptInjector.fromUrl("stomp.js").inject();
         ScriptInjector.fromUrl("sockjs-0.3.4.js").inject();
         loadedLib = true;
