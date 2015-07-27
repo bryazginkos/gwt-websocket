@@ -34,7 +34,7 @@ public class WSComponent<S, G> {
         }
     }
 
-    public static void loadScripts() {
+    private static void loadScripts() {
         ScriptInjector.fromUrl("stomp.js").inject();
         ScriptInjector.fromUrl("sockjs-0.3.4.js").inject();
         loadedLib = true;
