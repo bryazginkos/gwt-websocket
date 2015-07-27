@@ -4,7 +4,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.ScriptInjector;
 
 import ru.gwtwebsocket.dto.client.ClientInfoImpl;
-import ru.gwtwebsocket.dto.client.json.ServerInfoClient;
+import ru.gwtwebsocket.dto.client.json.ServerInfo;
 import ru.gwtwebsocket.dto.client.json.converter.Converter;
 
 /**
@@ -19,9 +19,9 @@ public class WSComponent {
 
     private final String url;
     private final String subscribeUrl;
-    private final WSCallback<ServerInfoClient> callback;
+    private final WSCallback<ServerInfo> callback;
 
-    public WSComponent(String url, String subscribeUrl, WSCallback<ServerInfoClient> callback) {
+    public WSComponent(String url, String subscribeUrl, WSCallback<ServerInfo> callback) {
         super();
         this.url = url;
         this.subscribeUrl = subscribeUrl;
@@ -39,8 +39,8 @@ public class WSComponent {
     }
 
     private void handleAnswer(String answer) {
-        ServerInfoClient serverInfoClient = converter.deserialize(answer);
-        callback.onMessage(serverInfoClient);
+        ServerInfo serverInfo = converter.deserialize(answer);
+        callback.onMessage(serverInfo);
     }
 
 

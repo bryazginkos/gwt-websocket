@@ -4,7 +4,7 @@ import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 import ru.gwtwebsocket.dto.client.json.ClientInfo;
 import ru.gwtwebsocket.dto.client.json.ServerAddInfoClient;
-import ru.gwtwebsocket.dto.client.json.ServerInfoClient;
+import ru.gwtwebsocket.dto.client.json.ServerInfo;
 
 /**
  * Created by Константин on 26.07.2015.
@@ -12,7 +12,7 @@ import ru.gwtwebsocket.dto.client.json.ServerInfoClient;
 public interface DtoFactory extends AutoBeanFactory {
 
     AutoBean<ClientInfo> clientInfoClient();
-    AutoBean<ServerInfoClient> serverInfoClient();
+    AutoBean<ServerInfo> serverInfoClient();
     AutoBean<ServerAddInfoClient> serverAddInfoClient();
 
 }

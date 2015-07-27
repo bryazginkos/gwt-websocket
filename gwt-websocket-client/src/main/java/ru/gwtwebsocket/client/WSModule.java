@@ -6,7 +6,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import ru.gwtwebsocket.dto.client.ClientInfoImpl;
-import ru.gwtwebsocket.dto.client.json.ServerInfoClient;
+import ru.gwtwebsocket.dto.client.json.ServerInfo;
 
 /**
  * Created by Константин on 24.07.2015.
@@ -18,9 +18,9 @@ public class WSModule implements EntryPoint {
         Button buttonSend = new Button("Send");
         final WSComponent wsComponent = new WSComponent("http://127.0.0.1:8080/websocketservice",
                 "/topic/info",
-                new WSCallback<ServerInfoClient>() {
+                new WSCallback<ServerInfo>() {
                     @Override
-                    public void onMessage(ServerInfoClient serverInfo) {
+                    public void onMessage(ServerInfo serverInfo) {
                         String msg = serverInfo.getProblem() + "=" + serverInfo.getResult();
                         msg += " " + serverInfo.getServerAddInfo().getTime();
                         Window.alert(msg);

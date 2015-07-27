@@ -1,24 +1,24 @@
 package ru.gwtwebsocket.dto.client;
 
 import ru.gwtwebsocket.dto.client.json.ServerAddInfoClient;
-import ru.gwtwebsocket.dto.client.json.ServerInfoClient;
+import ru.gwtwebsocket.dto.client.json.ServerInfo;
 
 /**
  * Created by Константин on 23.07.2015.
  */
-public class ServerInfo implements ServerInfoClient {
+public class ServerInfoImpl implements ServerInfo {
 
     private String problem;
     private Integer result;
     private ServerAddInfo serverAddInfo;
 
-    public ServerInfo(String problem, Integer result, ServerAddInfo serverAddInfo) {
+    public ServerInfoImpl(String problem, Integer result, ServerAddInfo serverAddInfo) {
         this.problem = problem;
         this.result = result;
         this.serverAddInfo = serverAddInfo;
     }
 
-    public ServerInfo() {
+    public ServerInfoImpl() {
     }
 
     @Override
