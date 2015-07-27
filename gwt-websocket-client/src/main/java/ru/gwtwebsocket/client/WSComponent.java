@@ -3,30 +3,31 @@ package ru.gwtwebsocket.client;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.ScriptInjector;
 
-import ru.gwtwebsocket.dto.client.ClientInfoImpl;
-import ru.gwtwebsocket.dto.client.json.ServerInfo;
 import ru.gwtwebsocket.dto.client.json.converter.Converter;
 
 /**
  * Created by Константин on 25.07.2015.
  */
-public class WSComponent {
+public class WSComponent<SI, GI> {
 
     private static boolean loadedLib = false;
 
     private JavaScriptObject stompClient;
-    private final Converter converter;
+    private final Converter<SI>  sConverter;
+    private final Converter<GI>  gConverter;
+
+    private final WSConfiguration<SI, GI> configuration;
 
     private final String url;
     private final String subscribeUrl;
-    private final WSCallback<ServerInfo> callback;
 
-    public WSComponent(String url, String subscribeUrl, WSCallback<ServerInfo> callback) {
+    public WSComponent(WSConfiguration<SI, GI> configuration) {
         super();
-        this.url = url;
-        this.subscribeUrl = subscribeUrl;
-        this.callback = callback;
-        converter = new Converter();
+        this.configuration = configuration;
+        this.url = configuration.getUrl();
+        this.subscribeUrl = configuration.getSubscribeUrl();
+        sConverter = new Converter<>(configuration.getSiClass());
+        gConverter = new Converter<>(configuration.getGiClass());
         if (!loadedLib) {
             loadScrpipts();
         }
@@ -39,8 +40,8 @@ public class WSComponent {
     }
 
     private void handleAnswer(String answer) {
-        ServerInfo serverInfo = converter.deserialize(answer);
-        callback.onMessage(serverInfo);
+        GI ans = gConverter.deserialize(answer);
+        configuration.getCallback().onMessage(ans);
     }
 
 
@@ -60,12 +61,12 @@ public class WSComponent {
         stompClient.send("/app/say", {}, json);
     }-*/;
 
-    private String convertToJSON(ClientInfoImpl clientInfoImpl) {
-        return converter.serialize(clientInfoImpl);
+    private String convertToJSON(SI si) {
+        return sConverter.serialize(si);
     }
 
-    public void send(ClientInfoImpl clientInfoImpl) {
-        String json = convertToJSON(clientInfoImpl);
+    public void send(SI si) {
+        String json = convertToJSON(si);
         send(json);
     }
 }
