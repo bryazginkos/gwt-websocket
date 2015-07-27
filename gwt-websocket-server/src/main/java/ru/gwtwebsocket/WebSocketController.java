@@ -5,7 +5,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import ru.gwtwebsocket.dto.client.ClientInfoImpl;
-import ru.gwtwebsocket.dto.client.ServerAddInfo;
+import ru.gwtwebsocket.dto.client.ServerAddInfoImpl;
 import ru.gwtwebsocket.dto.client.ServerInfoImpl;
 
 import java.util.Date;
@@ -25,7 +25,7 @@ public class WebSocketController {
         int b = clientInfoImpl.getB();
         String problem = a  + "+" + b;
         int result = a + b;
-        sendResult(new ServerInfoImpl(problem, result, new ServerAddInfo(new Date())));
+        sendResult(new ServerInfoImpl(problem, result, new ServerAddInfoImpl(new Date())));
     }
 
     private void sendResult(ServerInfoImpl serverInfoImpl) {

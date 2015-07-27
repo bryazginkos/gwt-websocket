@@ -1,20 +1,20 @@
 package ru.gwtwebsocket.dto.client;
 
-import ru.gwtwebsocket.dto.client.json.ServerAddInfoClient;
+import ru.gwtwebsocket.dto.client.json.ServerAddInfo;
 
 import java.util.Date;
 
 /**
  * Created by Константин on 26.07.2015.
  */
-public class ServerAddInfo implements ServerAddInfoClient {
+public class ServerAddInfoImpl implements ServerAddInfo {
     private Date time;
 
-    public ServerAddInfo(Date time) {
+    public ServerAddInfoImpl(Date time) {
         this.time = time;
     }
 
-    public ServerAddInfo() {
+    public ServerAddInfoImpl() {
     }
 
     @Override

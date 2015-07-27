@@ -12,7 +12,7 @@ public interface ServerInfo {
 
     public void setProblem(String problem);
 
-    public ServerAddInfoClient getServerAddInfo();
+    public ServerAddInfo getServerAddInfo();
 
-    public void setServerAddInfo(ServerAddInfoClient serverAddInfo);
+    public void setServerAddInfo(ServerAddInfo serverAddInfo);
 }

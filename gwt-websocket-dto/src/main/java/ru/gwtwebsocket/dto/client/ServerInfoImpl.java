@@ -1,6 +1,6 @@
 package ru.gwtwebsocket.dto.client;
 
-import ru.gwtwebsocket.dto.client.json.ServerAddInfoClient;
+import ru.gwtwebsocket.dto.client.json.ServerAddInfo;
 import ru.gwtwebsocket.dto.client.json.ServerInfo;
 
 /**
@@ -47,7 +47,7 @@ public class ServerInfoImpl implements ServerInfo {
     }
 
     @Override
-    public void setServerAddInfo(ServerAddInfoClient serverAddInfo) {
-        this.serverAddInfo = (ServerAddInfo)serverAddInfo;
+    public void setServerAddInfo(ServerAddInfo serverAddInfo) {
+        this.serverAddInfo = serverAddInfo;
     }
 }
