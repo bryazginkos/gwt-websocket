@@ -1,5 +1,5 @@
 rootProject.name = 'gwt-websocket'
 include 'gwt-websocket-server'
 include 'gwt-websocket-dto'
-include 'gwt-websocket-example'
+include 'gwt-websocket-client'
 
