@@ -19,31 +19,40 @@ import ru.kosdev.gwtwebsocket.client.WSConfiguration;
  */
 public class ExampleModule implements EntryPoint {
     public void onModuleLoad() {
+        //create buttons
         Button buttonConn = new Button("Connect");
         Button buttonSend = new Button("Send");
 
+        //create WS configuration
         WSConfiguration<ClientInfo, ServerInfo> wsConfiguration = new WSConfiguration<ClientInfo, ServerInfo>()
-                .withUrl("http://127.0.0.1:8080/websocketservice")
-                .withSubscribeUrl("/topic/info")
-                .withGClass(ServerInfo.class)
-                .withSClass(ClientInfo.class)
-                .withAutoBeanFactory(GWT.<DtoFactory>create(DtoFactory.class))
-                .withCallback(new WSCallback<ServerInfo>() {
-                    @Override
-                    public void onMessage(ServerInfo serverInfo) {
-                        String msg = serverInfo.getProblem() + "=" + serverInfo.getResult();
-                        msg += " " + serverInfo.getServerAddInfo().getTime();
-                        Window.alert(msg);
-                    }
-                });
+                .withUrl("http://127.0.0.1:8080/websocketservice")  //ws URL
+                .withSubscribeUrl("/topic/info") //URL to subscribe
+                .withGClass(ServerInfo.class) //dto class for Getting Data
+                .withSClass(ClientInfo.class) //dto class for Sending Data
+                .withAutoBeanFactory(GWT.<DtoFactory>create(DtoFactory.class)); //factory
 
+        //creating component
         final WSComponent<ClientInfo, ServerInfo> wsComponent = new WSComponent<>(wsConfiguration);
+
+        //setting callback for income messages
+        wsComponent.setCallback(new WSCallback<ServerInfo>() {
+            @Override
+            public void onMessage(ServerInfo serverInfo) {
+                String msg = serverInfo.getProblem() + "=" + serverInfo.getResult();
+                msg += " " + serverInfo.getServerAddInfo().getTime();
+                Window.alert(msg);
+            }
+        });
+
+        //add buttons to panel
         RootPanel.get().add(buttonConn);
         RootPanel.get().add(buttonSend);
 
+        //set button handlers
         buttonConn.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
+                //connect to server
                 wsComponent.connect();
             }
         });
@@ -51,6 +60,7 @@ public class ExampleModule implements EntryPoint {
         buttonSend.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
+                //send data to server
                 wsComponent.send(new ClientInfoImpl(3,2), "/app/say");
             }
         });
