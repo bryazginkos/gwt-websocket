@@ -15,7 +15,7 @@ import ru.kosdev.gwtwebsocket.client.WSConfiguration;
 
 
 /**
- * Created by ���������� on 27.07.2015.
+ * Created by Kos on 27.07.2015.
  */
 public class ExampleModule implements EntryPoint {
     public void onModuleLoad() {

@@ -11,7 +11,7 @@ import ru.gwtwebsocket.dto.client.ServerInfoImpl;
 import java.util.Date;
 
 /**
- * Created by Константин on 23.07.2015.
+ * Created by Kos on 23.07.2015.
  */
 @Controller
 public class WebSocketController {

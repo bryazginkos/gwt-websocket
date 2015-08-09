@@ -1,7 +1,7 @@
 package ru.gwtwebsocket.dto.client;
 
 /**
- * Created by Константин on 23.07.2015.
+ * Created by Kos on 23.07.2015.
  */
 public class ServerInfoImpl implements ServerInfo {
 

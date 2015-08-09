@@ -3,7 +3,7 @@ package ru.gwtwebsocket.dto.client;
 import java.util.Date;
 
 /**
- * Created by Константин on 26.07.2015.
+ * Created by Kos on 26.07.2015.
  */
 public class ServerAddInfoImpl implements ServerAddInfo {
     private Date time;
