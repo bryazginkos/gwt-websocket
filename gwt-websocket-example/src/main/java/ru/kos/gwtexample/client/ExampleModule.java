@@ -6,15 +6,16 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
-import ru.gwtwebsocket.client.WSCallback;
-import ru.gwtwebsocket.client.WSComponent;
-import ru.gwtwebsocket.client.WSConfiguration;
 import ru.gwtwebsocket.dto.client.ClientInfo;
 import ru.gwtwebsocket.dto.client.ClientInfoImpl;
 import ru.gwtwebsocket.dto.client.ServerInfo;
+import ru.kosdev.gwtwebsocket.client.WSCallback;
+import ru.kosdev.gwtwebsocket.client.WSComponent;
+import ru.kosdev.gwtwebsocket.client.WSConfiguration;
+
 
 /**
- * Created by Константин on 27.07.2015.
+ * Created by пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ on 27.07.2015.
  */
 public class ExampleModule implements EntryPoint {
     public void onModuleLoad() {
@@ -50,7 +51,7 @@ public class ExampleModule implements EntryPoint {
         buttonSend.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                wsComponent.send(new ClientInfoImpl(3,2));
+                wsComponent.send(new ClientInfoImpl(3,2), "/app/say");
             }
         });
     }
